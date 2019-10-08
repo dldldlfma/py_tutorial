@@ -54,6 +54,7 @@ class MainDialog(QDialog):
         save_position = QFileDialog.getExistingDirectory(self)  #select save folder
         self.save_position.setText(save_position)
 
+
         for i,value in enumerate(self.file_list):
             if(self.binary):
                 img = cv.imread(value,0)

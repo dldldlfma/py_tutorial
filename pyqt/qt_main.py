@@ -63,16 +63,17 @@ class MainDialog(QDialog):
             img = cv.imread(self.file_list, cv.IMREAD_COLOR)
         
         if(self.median):
-            img = cv.medianBlur(img,13)
+            img = cv.medianBlur(img,5)
 
         if(self.binary):
             print(img.shape)
             img = cv.adaptiveThreshold(img, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11, 5)
         
-        save_path = save_position + '/fix_' + self.file_list[self.file_list.find('.'):]
+        save_path = save_position + '/fix_' + self.file_list[self.file_list.find('.')-1:]
+        print(self.file_list)
         cv.imwrite(save_path,img)
-        cv.imshow('binary_img',img)
-        cv.waitKey(0)
+        #cv.imshow('binary_img',img)
+        #cv.waitKey(0)
 
 if __name__ =='__main__':
     app = QApplication(sys.argv)
